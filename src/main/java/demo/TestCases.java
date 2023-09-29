@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 //Selenium Imports
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 
 public class TestCases {
-    ChromeDriver driver;
+    WebDriver driver;
     public TestCases()
     {
         System.out.println("Constructor: TestCases");
@@ -35,8 +36,12 @@ public class TestCases {
     
     public  void testCase01(){
         System.out.println("Start Test case: testCase01");
-        driver.get("https://www.google.com");
-        System.out.println("end Test case: testCase02");
+        SearchAmazon srchAmamzon  = new SearchAmazon(driver);
+        Boolean status = srchAmamzon.searchAmazon();
+        if(!status){
+            System.out.println("Search results do not contain amazon.in or amazon.com");
+        }System.out.println("Search results contain amazon.in or amamzon.com");
+        System.out.println("End Test case: testCase02");
     }
 
 
