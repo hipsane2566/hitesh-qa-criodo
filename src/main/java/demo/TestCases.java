@@ -4,12 +4,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 //Selenium Imports
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.BrowserType;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.Select;
 ///
 
 public class TestCases {
@@ -49,6 +44,37 @@ public class TestCases {
         totalNoOfHyperlinks = hyperlinks.count_Hyperlinks();
         System.out.println("The total no of hyperlinks present in given webpage are: " + totalNoOfHyperlinks);
         System.out.println("End Test case: testCase02");
+    }
+
+    //
+    public void testCase03() throws InterruptedException {
+        int profileViewCount;
+        int impressionViewCount;
+        Boolean status;
+        String postMessage = "This is for demo post";
+
+        System.out.println("Start Test case: testCase03");
+        PostOnLinkedIn postonlinkedin = new PostOnLinkedIn(driver);
+
+        // Login to application
+        postonlinkedin.loginToApp("hiteshpatiyal1566@gmail.com", "Pa$$w.rd");
+
+        // Get count of profil view and impression view and print it.
+        profileViewCount = postonlinkedin.getCountOfProfileView();
+        impressionViewCount = postonlinkedin.getCountOfImpression();
+        System.out.println("Count of `Who's viewed your profile`: " + profileViewCount);
+        System.out.println("Count of 'Impressions of your post': " + impressionViewCount);
+
+        // Verify the post is sharing with `Connections only` and confirm if it gets
+        // posted
+        status = postonlinkedin.createPost(postMessage);
+        if (!status) {
+            System.out.println("Failed to create post");
+        } else {
+            System.out.println("Post get successfully posted");
+        }
+
+        System.out.println("End Test case: testCase03");
     }
 
 }
