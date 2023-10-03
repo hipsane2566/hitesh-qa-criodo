@@ -1,5 +1,6 @@
 package demo;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -77,4 +78,17 @@ public class TestCases {
         System.out.println("End Test case: testCase03");
     }
 
+    public void testCase04() throws InterruptedException {
+        System.out.println("Start Test case: testCase04");
+        BookMyShowImageURLs bookMyshowImgUrls = new BookMyShowImageURLs(driver);
+        List<String> urls = bookMyshowImgUrls.getImageUrls();
+        for (String url : urls) {
+            System.out.println("Image URL: " + url);
+        }
+
+        String nameOfMovie = bookMyshowImgUrls.getPremiereMovietName();
+        String languageOfMovie = bookMyshowImgUrls.getPremiereMovieLang();
+        System.out.println("Name of the movie: " + nameOfMovie + "\n Language of the movie" + languageOfMovie);
+        System.out.println("End Test case: testCase04");
+    }
 }
