@@ -12,11 +12,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 ///
 
-
 public class TestCases {
     WebDriver driver;
-    public TestCases()
-    {
+
+    public TestCases() {
         System.out.println("Constructor: TestCases");
         WebDriverManager.chromedriver().timeout(30).setup();
         driver = new ChromeDriver();
@@ -25,24 +24,31 @@ public class TestCases {
 
     }
 
-    public void endTest()
-    {
+    public void endTest() {
         System.out.println("End Test: TestCases");
         driver.close();
         driver.quit();
 
     }
 
-    
-    public  void testCase01(){
+    public void testCase01() {
         System.out.println("Start Test case: testCase01");
-        SearchAmazon srchAmamzon  = new SearchAmazon(driver);
+        SearchAmazon srchAmamzon = new SearchAmazon(driver);
         Boolean status = srchAmamzon.searchAmazon();
-        if(!status){
+        if (!status) {
             System.out.println("Search results do not contain amazon.in or amazon.com");
-        }System.out.println("Search results contain amazon.in or amamzon.com");
-        System.out.println("End Test case: testCase02");
+        }
+        System.out.println("Search results contain amazon.in or amamzon.com");
+        System.out.println("End Test case: testCase01");
     }
 
+    public void testCase02() {
+        int totalNoOfHyperlinks;
+        System.out.println("Start Test case: testCase02");
+        BookMyShowHyperLinks hyperlinks = new BookMyShowHyperLinks(driver);
+        totalNoOfHyperlinks = hyperlinks.count_Hyperlinks();
+        System.out.println("The total no of hyperlinks present in given webpage are: " + totalNoOfHyperlinks);
+        System.out.println("End Test case: testCase02");
+    }
 
 }
