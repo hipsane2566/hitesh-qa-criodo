@@ -93,7 +93,6 @@ public class TestCases {
     }
 
     public void testCase05() {
-        String showText;
         System.out.println("Start Test case: testCase05");
         NestedFrameText frameTxt = new NestedFrameText(driver);
         List<String> framesText = frameTxt.getFrameText();
@@ -121,5 +120,32 @@ public class TestCases {
         // }
         System.out.println("End Test case: testCase05");
 
+    }
+
+    public void testCase06() throws InterruptedException {
+
+        System.out.println("Start Test case: testCase06");
+        ImdbRatings imdb = new ImdbRatings(driver);
+
+        // get highest rated movie name on IMDB rating
+        String highestRatedMovie = imdb.getHighestRatedMovie();
+        System.out.println("The IMDB highest rated movie is: " + highestRatedMovie);
+
+        // get the no of movies listed in the table
+        int noOfMovies = imdb.getNoOfMovies();
+        System.out.println("The number of movies listed in table are: " + noOfMovies);
+
+        // get the oldest movie in the list
+        String oldestReleaseMovie = imdb.getOldestMovie();
+        System.out.println("The oldest movie in the list is: " + oldestReleaseMovie);
+
+        // get the recent movie in the list
+        String recentReleaseMovie = imdb.getRecentMovie();
+        System.out.println("The recent movie on the list is: " + recentReleaseMovie);
+
+        // get the most user ratings movie in the list
+        String mostUserRatingMovie = imdb.getMostUserRatingMovie();
+        System.out.println("The most user ratings movie is: " + mostUserRatingMovie);
+        System.out.println("End Test case: testCase06");
     }
 }
