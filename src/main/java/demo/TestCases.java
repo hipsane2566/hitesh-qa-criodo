@@ -1,9 +1,15 @@
 package demo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 //Selenium Imports
 import org.openqa.selenium.WebDriver;
 ///
@@ -147,5 +153,32 @@ public class TestCases {
         String mostUserRatingMovie = imdb.getMostUserRatingMovie();
         System.out.println("The most user ratings movie is: " + mostUserRatingMovie);
         System.out.println("End Test case: testCase06");
+    }
+
+    public void testCase07() {
+        System.out.println("Start Test case: testCase07");
+        WindowHandle windowhandle = new WindowHandle(driver);
+        // Click on try it button
+        windowhandle.clickOnTryBtn();
+
+        // Get new browser window page URL
+        List<String> pageInfo = windowhandle.getPageUrl();
+
+        System.out.println("New Window Page URL: " + pageInfo.get(0));
+        System.out.println("New Window Page: " + pageInfo.get(1));
+
+        //
+
+        try {
+            TakesScreenshot ts = ((TakesScreenshot) driver);
+            File src = ts.getScreenshotAs(OutputType.FILE);
+            File trg = new File(System.getProperty("user.dir") + "/OutputFile/ss1.png");
+            FileUtils.copyFile(src, trg);
+            System.out.println("Screenshot captured and saved to: " + trg);
+        } catch (IOException e) {
+            System.out.println("Failed to capture screenshot: " + e.getMessage());
+        }
+        // System.out.println(pageTitle);
+        System.out.println("Start Test case: testCase07");
     }
 }
