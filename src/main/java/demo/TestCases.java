@@ -91,4 +91,35 @@ public class TestCases {
         System.out.println("Name of the movie: " + nameOfMovie + "\n Language of the movie" + languageOfMovie);
         System.out.println("End Test case: testCase04");
     }
+
+    public void testCase05() {
+        String showText;
+        System.out.println("Start Test case: testCase05");
+        NestedFrameText frameTxt = new NestedFrameText(driver);
+        List<String> framesText = frameTxt.getFrameText();
+
+        for (String frametext : framesText) {
+            System.out.println("The frame text is: " + frametext);
+        }
+        // for (int i = 0; i < framesText.size(); i++) {
+        // switch (i) {
+        // case 0:
+        // System.out.println("The top left frame text is: " + framesText.get(0));
+        // break;
+        // case 1:
+        // System.out.println("The top middle frame text is: " + framesText.get(1));
+        // break;
+        // case 2:
+        // System.out.println("The top right frame text is: " + framesText.get(2));
+        // break;
+        // case 3:
+        // System.out.println("The bottom frame text is: " + framesText.get(2));
+        // break;
+        // default:
+        // System.out.println("No text");
+        // }
+        // }
+        System.out.println("End Test case: testCase05");
+
+    }
 }
